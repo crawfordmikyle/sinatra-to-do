@@ -24,7 +24,7 @@ use Rack::Flash
 	end 
 
 	get '/tasks/:id' do
-		if logged_in
+		if logged_in?
 			@user = current_user
 			@task = Task.find_by_id(params[id])
 			if @task.user_id == @user.id

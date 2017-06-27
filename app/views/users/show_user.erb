@@ -3,3 +3,10 @@
 <% end %>
 
 <h3>Your To Do List:</h3>
+<%@user_tasks.each do |task|%>
+<%=task.title%><br>
+<%=task.content%><br>
+<%=task.due_date%><br>
+<a href="/tasks/<%=task.id%>">View Task</a>
+<br><br>
+<%end%>

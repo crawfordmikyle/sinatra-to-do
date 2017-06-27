@@ -57,6 +57,7 @@ class UserController < ApplicationController
 	get '/users/:slug' do 
 		if logged_in?
 			@user = User.find_by_slug(params[:slug])
+			@user_tasks = Task.all.select{|t| t.user_id ==@user.id}
 			erb :'users/show_user'
 		else
 			flash[:message] = "You need to be logged in to do that"
