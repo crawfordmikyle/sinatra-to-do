@@ -42,4 +42,12 @@ helpers do
       false
     end 
   end
+
+  def is_user?
+    if !User.find_by(email: params[:email])
+      true
+    else
+      false
+    end 
+  end
 end 

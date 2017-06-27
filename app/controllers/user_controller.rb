@@ -1,7 +1,12 @@
 class UserController < ApplicationController
 	use Rack::Flash
 	get '/' do
-		erb :index
+		if logged_in?
+			@user = current_user
+			redirect "/users/#{@user.slug}"
+		else
+			erb :index
+		end 
 	end 
 
 	get '/signup' do
@@ -22,6 +27,27 @@ class UserController < ApplicationController
 		end 
 	end 
 
+	post '/login' do
+		if is_user?
+			@user = User.find_by(email: params[:email]).authenticate(params[:password])
+				if !@user == nil
+					session[:user_id] = @user.id
+					redirect "/users/#{@user.slug}"
+				else
+					flash[:message] = "Invalid Login"
+					redirect "/login"
+				end 
+		else 
+			flash[:message] = "Invalid Login"
+			redirect "/login"
+		end 
+	end 
+
+	get '/logout' do
+		session.clear
+		redirect '/'
+	end 
+
 	post '/users/new' do
 		if valid_user_params? && !user_already_exists?
 			@user = User.create(params)
@@ -34,6 +60,11 @@ class UserController < ApplicationController
 	end 
 
 	get '/users/:slug' do 
-		@user = current_user
+		if logged_in?
+			@user = User.find_by_slug(params[:slug])
+			erb :'users/show_user'
+		else
+			erb :'users/login'
+		end 
 	end 
 end 
