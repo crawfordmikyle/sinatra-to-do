@@ -1,7 +1,8 @@
 class TaskController < ApplicationController
-
+use Rack::Flash
 	get '/tasks/new' do
 		if logged_in?
+			@user = current_user
 			erb :'tasks/new_task'
 		else
 			flash[:message] = "You need to be logged in to do that"
@@ -10,6 +11,7 @@ class TaskController < ApplicationController
 	end 
 
 	post '/tasks/new' do
+		binding.pry
 		if logged_in?
 			@user = current_user
 			params[:user_id] = @user.id
