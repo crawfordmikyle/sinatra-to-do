@@ -1,3 +1,4 @@
+require 'rack-flash'
 class TaskController < ApplicationController
 use Rack::Flash
 	get '/tasks/new' do

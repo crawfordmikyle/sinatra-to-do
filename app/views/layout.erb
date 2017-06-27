@@ -6,23 +6,39 @@
     <link rel="stylesheet" href="/css/style.css">
   </head>
   <body>
-    <nav>
-<%if logged_in? == false%>
-    ||Welcome||
-    <a href="/login">Sign In</a>||
-    <a href="/signup">Sign Up</a>||
-<%else%>
-    ||Welcome, <a href="/users/<%=@user.slug%>"><%=@user.firstname%></a>||
-    <a href="/tasks/new">New Task</a>||
-    <a href="/logout">Log Out</a>||
-<%end%>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Sinatra To Do App</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+          <%if logged_in? == false%>
+            <li>Welcome</li> 
+            <li><a href="/login">Sign In</a></li> 
+            <li><a href="/signup">Sign Up</a></li> 
+          <%else%>
+            <li class="active"><a href="/users/<%=@user.slug%>">Welcome, <%=@user.firstname%></a></li> 
+            <li><a href="/tasks/new">New Task</a></li> 
+            <li><a href="/logout">Log Out</a></li> 
+          <%end%>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
     </nav>
-    <div class="container">
-      <h1>Sinatra To Do</h1>
+
+    <div class="container" role="main">
+      <h3>Your To Do List:</h3>
       <%= yield %> 
-      
-      
     </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   </body>

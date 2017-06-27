@@ -1,5 +1,6 @@
+require 'rack-flash'
 class UserController < ApplicationController
-	use Rack::Flash
+use Rack::Flash
 	get '/' do
 		if logged_in?
 			@user = current_user
@@ -49,7 +50,7 @@ class UserController < ApplicationController
 			session[:user_id] = @user.id
 			redirect "/users/#{@user.slug}"
 		else
-			flash[:message] = "Invalid Entry"
+			flash[:message] = "That email is already in use or you did not enter valid input"
 			redirect '/signup'
 		end 
 	end 

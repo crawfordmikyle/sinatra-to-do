@@ -1,4 +1,4 @@
-require 'rack-flash'
+require './config/environment'
 class ApplicationController < Sinatra::Base
 set :views, Proc.new { File.join(root, "../views/") }
 
