@@ -59,8 +59,8 @@ use Rack::Flash
 			@user = current_user
 			@task = Task.find_by_id(params[:id])
 			if @task.user_id == @user.id
-				params[:user_id] = @user.id
-				@task.update(params)
+				params[:task][:user_id] = @user.id
+				@task.update(params[:task])
 				flash[:message] = "Task Updated"
 				redirect "/users/#{@user.slug}"
 			else
