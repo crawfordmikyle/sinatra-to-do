@@ -11,7 +11,6 @@ use Rack::Flash
 	end 
 
 	post '/tasks/new' do
-		binding.pry
 		if logged_in?
 			@user = current_user
 			params[:user_id] = @user.id
