@@ -42,7 +42,6 @@ use Rack::Flash
 		if logged_in?
 			@user = current_user
 			@task = Task.find_by_id(params[:id])
-			binding.pry
 			if @task.user_id == @user.id
 				erb :'tasks/edit_task'
 			else
