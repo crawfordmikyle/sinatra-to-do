@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>Fwitter</title>
+    <title>Sinatra To Do</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/style.css">
   </head>
@@ -13,12 +13,12 @@
     <a href="/signup">Sign Up</a>||
 <%else%>
     ||Welcome, <a href="/users/<%=@user.slug%>"><%=@user.username%></a>||
-    <a href="/tweets/new">New Tweet</a>||
+    <a href="/tasks/new">New Task</a>||
     <a href="/logout">Log Out</a>||
 <%end%>
     </nav>
     <div class="container">
-      <h1>Fwitter</h1>
+      <h1>Sinatra To Do</h1>
       <%= yield %> 
       
       
