@@ -1,7 +1,7 @@
 module Slugfindable
   module InstanceMethods
     def slug
-      self.name.gsub(" ", "-").downcase
+      "#{self.firstname.downcase}-#{self.lastname.downcase}"
     end
   end
 

@@ -1,3 +1,4 @@
+require 'rack-flash'
 class ApplicationController < Sinatra::Base
 set :views, Proc.new { File.join(root, "../views/") }
 
@@ -11,18 +12,34 @@ configure do
 helpers do
 	def logged_in?
       !!current_user
-    end
+  end
 
-    def current_user
+  def current_user
       @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
-    end
+  end
 
-    def is_an_email?
+  def is_an_email?
       if params[:email].include?("@") && params[:email].include?(".")
         true
       else
         false
       end 
+    end 
+  end
+
+  def valid_user_params?
+    if !params[:firstname].empty? && !params[:lastname].empty? && !params[:password].empty? && is_an_email?
+      true
+    else
+      false
+    end 
+  end 
+
+  def user_already_exists?
+    if User.find_by(email: params[:email])
+      true
+    else 
+      false
     end 
   end
 end 
