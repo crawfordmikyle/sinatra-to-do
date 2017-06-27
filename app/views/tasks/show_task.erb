@@ -10,7 +10,7 @@
 <br>
 <a href="/tasks/:id/edit">Edit</a>
 <br>
-<form method="post" action="/tasks/:id/delete">
+<form method="post" action="/tasks/<%=@task.id%>/delete">
 	<input id="hidden" type="hidden" name="_method" value="delete">
 	<input type="submit" value="Delete Task">
 </form>

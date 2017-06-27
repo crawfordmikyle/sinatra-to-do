@@ -41,7 +41,7 @@ use Rack::Flash
 	get '/tasks/:id/edit' do
 		if logged_in?
 			@user = current_user
-			@task = Task.find_by_id(params[id])
+			@task = Task.find_by_id(params[:id])
 			if @task.user_id == @user.id
 				erb :'tasks/edit_task'
 			else
@@ -57,7 +57,7 @@ use Rack::Flash
 	patch '/tasks/:id/edit' do
 		if logged_in?
 			@user = current_user
-			@task = Task.find_by_id(params[id])
+			@task = Task.find_by_id(params[:id])
 			if @task.user_id == @user.id
 				params[:user_id] = @user.id
 				@task.update(params)
@@ -76,7 +76,7 @@ use Rack::Flash
 	delete '/tasks/:id/delete' do
 		if logged_in?
 			@user = current_user
-			@task = Task.find_by_id(params[id])
+			@task = Task.find_by_id(params[:id])
 			if @task.user_id == @user.id
 				@task.delete
 				flash[:message] = "Task Deleted"
