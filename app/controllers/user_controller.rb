@@ -43,11 +43,6 @@ class UserController < ApplicationController
 		end 
 	end 
 
-	get '/logout' do
-		session.clear
-		redirect '/'
-	end 
-
 	post '/users/new' do
 		if valid_user_params? && !user_already_exists?
 			@user = User.create(params)
@@ -64,7 +59,13 @@ class UserController < ApplicationController
 			@user = User.find_by_slug(params[:slug])
 			erb :'users/show_user'
 		else
+			flash[:message] = "You need to be logged in to do that"
 			erb :'users/login'
 		end 
+	end 
+
+	get '/logout' do
+		session.clear
+		redirect '/'
 	end 
 end 
