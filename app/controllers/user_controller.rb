@@ -30,7 +30,7 @@ class UserController < ApplicationController
 	post '/login' do
 		if is_user?
 			@user = User.find_by(email: params[:email]).authenticate(params[:password])
-				if !@user == nil
+				if @user
 					session[:user_id] = @user.id
 					redirect "/users/#{@user.slug}"
 				else

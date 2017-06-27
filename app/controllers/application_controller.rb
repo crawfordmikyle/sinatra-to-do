@@ -44,7 +44,7 @@ helpers do
   end
 
   def is_user?
-    if !User.find_by(email: params[:email])
+    if User.find_by(email: params[:email])
       true
     else
       false
