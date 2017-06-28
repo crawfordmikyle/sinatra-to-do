@@ -1,17 +1,22 @@
+
 <% if flash.has?(:message) %>
+<div class="alert-info" roll="alert">
 	<%=flash[:message] %>
+</div>
 <% end %>
 
 <form method="post" action="/tasks/<%=@task.id%>/edit" id="new_task">
+<div class="form-group">
 	<input id="hidden" type="hidden" name="_method" value="patch">
 	<label for="title">Title:</label>
-	<input type="text" name="task[title]" value="<%=@task.title%>">
+	<input type="text" class="form-control" name="task[title]" value="<%=@task.title%>">
 	<br>
 	<label for="content">Content:</label>
-	<textarea name="task[content]" form="new_task"><%=@task.content%></textarea>
+	<textarea name="task[content]" class="form-control" form="new_task"><%=@task.content%></textarea>
 	<br>
 	<label for="due_date">Due Date:</label>
-	<input type="date" name="task[due_date]" value="<%=@task.due_date%>">
+	<input type="date" class="form-control" name="task[due_date]" value="<%=@task.due_date%>">
 	<br>
-	<input type="submit" value="Edit Task">
+	<input type="submit" class="btn btn-primary" value="Edit Task">
+</div>
 </form>

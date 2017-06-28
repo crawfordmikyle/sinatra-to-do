@@ -1,5 +1,7 @@
 <% if flash.has?(:message) %>
+<div class="alert-info" roll="alert">
 	<%=flash[:message] %>
+</div>
 <% end %>
 
 <%=@task.title%>
