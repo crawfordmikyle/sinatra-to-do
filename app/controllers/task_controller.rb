@@ -15,8 +15,13 @@ use Rack::Flash
 		if logged_in?
 			@user = current_user
 			params[:user_id] = @user.id
-			@task = Task.create(params)
-			redirect "/users/#{@user.slug}"
+			if !params[:title].empty?
+				@task = Task.create(params)
+				redirect "/users/#{@user.slug}"
+			else
+				flash[:message] = "You can't make an empty task"
+				redirect '/tasks/new'
+			end 
 		else
 			flash[:message] = "You need to be logged in to do that"
 			redirect '/login'
