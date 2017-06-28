@@ -1,10 +1,11 @@
 
 <% if flash.has?(:message) %>
 <div class="alert-info" roll="alert">
-	<%=flash[:message] %>
+	<%=flash[:message]%>
 </div>
 <% end %>
-
+<div class="row">
+<div class="col-md-6 col-md-offset-3">
 <form method="post" action="/tasks/<%=@task.id%>/edit" id="new_task">
 <div class="form-group">
 	<input id="hidden" type="hidden" name="_method" value="patch">
@@ -20,3 +21,5 @@
 	<input type="submit" class="btn btn-primary" value="Edit Task">
 </div>
 </form>
+</div>
+</div>

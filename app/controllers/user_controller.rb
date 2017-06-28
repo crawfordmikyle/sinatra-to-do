@@ -38,7 +38,7 @@ use Rack::Flash
 					flash[:message] = "Invalid Login"
 					redirect "/login"
 				end 
-		else 
+		else
 			flash[:message] = "Invalid Login"
 			redirect "/login"
 		end 

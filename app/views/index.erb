@@ -1,7 +1,29 @@
 <% if flash.has?(:message) %>
-	<%= flash[:message] %>
+<div class="alert-info" roll="alert">
+	<%=flash[:message]%>
+</div>
 <% end %>
 
-Welcome to Sinatra To Do
-<a href="/login">Sign In</a>
+<div class="row">
+<div class="col-md-6 col-md-offset-3">
+<div class="well">
+<h1>Welcome to Sinatra To Do</h1>
+<form method="post" action="/login">
+<div class="from-group">
+
+	<label for="email">Email:</label>
+	<input type="text" class="form-control" name="email">
+
+	<label for="password">Password:</label>
+	<input type="password" class="form-control" name="password">
+
+	<br>
+	
+	<input type="submit" class="btn btn-primary" value="Log In">
+</div>
+</form>
+
 <a href="/signup">Sign Up</a>
+</div>
+</div>
+</div>

@@ -1,8 +1,11 @@
-
 <% if flash.has?(:message) %>
-	<%=flash[:message] %>
+<div class="alert-info" roll="alert">
+	<%=flash[:message]%>
+</div>
 <% end %>
-
+<div class="row">
+<div class="col-md-6 col-md-offset-3">
+<div class="well">
 <form method="post" action="/users/new">
 <div class="form-group">
 	<label for="email">Email:</label>
@@ -16,7 +19,12 @@
 
 	<label for="password">Password:</label>
 	<input type="password" class="form-control" name="password">
+	
+	<br>
 
 	<input type="submit" class="btn btn-primary" value="Create User">
 </div>
 </form>
+</div>
+</div>
+</div>
