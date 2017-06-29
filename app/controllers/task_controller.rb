@@ -1,6 +1,6 @@
 require 'rack-flash'
 class TaskController < ApplicationController
-use Rack::Flash
+
 	get '/tasks/new' do
 		if logged_in?
 			@user = current_user

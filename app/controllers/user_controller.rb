@@ -1,6 +1,6 @@
 require 'rack-flash'
 class UserController < ApplicationController
-use Rack::Flash
+
 	get '/' do
 		if logged_in?
 			@user = current_user
