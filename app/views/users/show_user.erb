@@ -1,25 +1,24 @@
 <% if flash.has?(:message) %>
-<div class="alert-info" roll="alert">
-	<%=flash[:message]%>
-</div>
+	<div class="alert-info" roll="alert">
+		<%=flash[:message]%>
+	</div>
 <% end %>
 <div class="row">
-<div class="col-md-6 col-md-offset-3">
-<div class="well">
-<h3>Your To Do List:</h3>
-
-<%@user_tasks.each do |task|%>
-<div class="well">
-Title:
-<%=task.title%><br>
-Content:
-<%=task.content%><br>
-Due Date:
-<%=task.due_date%><br>
-<a href="/tasks/<%=task.id%>">View Task</a>
-<br><br>
-</div>
-<%end%>
-</div>
-</div>
+	<div class="col-md-6 col-md-offset-3">
+		<div class="well">
+			<h3>Your To Do List:</h3>
+			<%@user_tasks.each do |task|%>
+				<div class="well">
+					Title:
+					<%=task.title%><br>
+					Content:
+					<%=task.content%><br>
+					Due Date:
+					<%=task.due_date%><br>
+					<a href="/tasks/<%=task.id%>">View Task</a>
+					<br><br>
+				</div>
+			<%end%>
+		</div>
+	</div>
 </div>

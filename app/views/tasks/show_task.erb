@@ -1,26 +1,19 @@
 <% if flash.has?(:message) %>
-<div class="alert-info" roll="alert">
-	<%=flash[:message]%>
-</div>
+	<div class="alert-info" roll="alert">
+		<%=flash[:message]%>
+	</div>
 <% end %>
 <div class="row">
-<div class="col-md-6 col-md-offset-3">
-<div class="well">
-Title:
-<%=@task.title%>
-<br>
-Content:
-<%=@task.content%>
-<br>
-Due Date:
-<%=@task.due_date%>
-<br>
-<a href="/tasks/<%=@task.id%>/edit">Edit</a>
-<br>
-<form method="post" action="/tasks/<%=@task.id%>/delete">
-	<input id="hidden" type="hidden" name="_method" value="delete">
-	<input type="submit" value="Delete Task">
-</form>
-</div>
-</div>
+	<div class="col-md-6 col-md-offset-3">
+		<div class="well">
+			Title: <%=@task.title%><br>
+			Content: <%=@task.content%><br>
+			Due Date: <%=@task.due_date%><br>
+			<a href="/tasks/<%=@task.id%>/edit">Edit</a><br>
+			<form method="post" action="/tasks/<%=@task.id%>/delete">
+				<input id="hidden" type="hidden" name="_method" value="delete">
+				<input type="submit" value="Delete Task">
+			</form>
+		</div>
+	</div>
 </div>

@@ -1,25 +1,23 @@
 
 <% if flash.has?(:message) %>
-<div class="alert-info" roll="alert">
-	<%=flash[:message]%>
-</div>
+	<div class="alert-info" roll="alert">
+		<%=flash[:message]%>
+	</div>
 <% end %>
 <div class="row">
-<div class="col-md-6 col-md-offset-3">
-<div class="well">
-<form method="post" action="/login">
-<div class="from-group">
-	<label for="email">Email:</label>
-	<input type="text" class="form-control" name="email">
+	<div class="col-md-6 col-md-offset-3">
+		<div class="well">
+			<form method="post" action="/login">
+				<div class="from-group">
+					<label for="email">Email:</label>
+					<input type="text" class="form-control" name="email">
 
-	<label for="password">Password:</label>
-	<input type="password" class="form-control" name="password">
+					<label for="password">Password:</label>
+					<input type="password" class="form-control" name="password"><br>
 
-	<br>
-	
-	<input type="submit" class="btn btn-primary" value="Log In">
-</div>
-</form>
-</div>
-</div>
+					<input type="submit" class="btn btn-primary" value="Log In">
+				</div>
+			</form>
+		</div>
+	</div>
 </div>

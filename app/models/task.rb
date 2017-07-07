@@ -1,3 +1,5 @@
 class Task < ActiveRecord::Base
 	belongs_to :user
-end 
+
+	validates :title, presence: true
+end
